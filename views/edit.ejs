@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改页面</title>
+    <style>
+        input {
+            border: 1px solid #ccc;
+            width: 180px;
+            height: 30px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 style="color:pink;">修改页面</h2>
+    <form action="/posts/edit" method="POST">
+        <input type="hidden" name="oldid" value="<%=id%>">
+        <div>标&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 题：<input type="text" name="title" value="<%=title%>"></div>
+        <div>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 章：<input type="text" name="content" value="<%= content %>"></div>
+        <div style="margin: 20px 0px 0px 90px;">
+            <button style="background-color: deeppink;color: white;border: 1px solid deeppink;padding: 5px 10px;border-radius: 5px;">提交</button>
+        </div>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+.main {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.first .myblog {
+    color: pink;
+    font-size: 30px;
+    width: 1200px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.second {
+    color: #ccc;
+    font-size: 16px;
+    width: 1200px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.hr {
+    border: 1px solid #e5e5e5;
+    margin-bottom: 20px;
+}
+
+.last .left {
+    float: left;
+    width: 400px;
+    text-align: right;
+    margin-right: 30px;
+}
+
+.last .left img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.last .right {
+    float: left;
+    width: 500px;
+    border: 1px solid #ccc;
+    /* height: 510px; */
+    height: 380px;
+}
+
+.last .right div {
+    margin-left: 15px;
+}
+
+.last .right div span {
+    color: red;
+}
+
+.last .right div input {
+    width: 450px;
+    height: 30px;
+    border: 1px solid #ccc;
+}
+
+.last .right div textarea {
+    width: 450px;
+    height: 150px;
+    border: 1px solid #ccc;
+}
+
+.last .right div button {
+    background-color: pink;
+    border: 1px solid pink;
+    color: white;
+    font-weight: bold;
+    width: 60px;
+    height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+}

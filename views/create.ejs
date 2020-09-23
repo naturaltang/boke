@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>myblog</title>
+    <base href="/">
+    <link rel="stylesheet" href="./semantic-ui/semantic.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./lib/layui/css/layui.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./semantic-ui/semantic.min.js"></script>
+    <script src="./lib/layui/layui.js"></script>
+</head>
+
+<body style="width: 1200px;margin: 0 auto;">
+    <div class="nav">
+        <div class="ui grid">
+            <div class="four wide column"></div>
+            <div class="eight wide column">
+                <a href="/posts">
+                    <h1>myblog</h1>
+                </a>
+                <p>my first blog</p>
+            </div>
+        </div>
+    </div>
+    <%- include('common/nav') %>
+        <div class="ui grid">
+            <div class="four wide column"></div>
+            <div class="eight wide column">
+            </div>
+        </div>
+        <div class="ui grid">
+            <div class="four wide column">
+                <a class="avatar avatar-link" href="/posts?author=1" data-title="admin | 保密" data-content="111">
+                    <img class="avatar" src="./img/img1.jpg" style="width: 100px;height: 100px;border-radius: 50%;">
+                </a>
+            </div>
+            <div class="eight wide column">
+                <form class="ui form segment" method="post" action="/posts/create">
+                    <div class="field required">
+                        <label>标题</label>
+                        <input type="text" name="title">
+                    </div>
+                    <div class="field required">
+                        <label>内容</label>
+                        <textarea id="myTxt" name="content" rows="15">
+                        </textarea>
+                    </div>
+                    <input type="submit" class="ui button" value="发布">
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript">
+            layui.use(['layedit', 'layer'], function() {
+                var $ = layui.jquery;
+                var layedit = layui.layedit;
+                var layer = layui.layer;
+                //初始化富文本框 
+                layedit.set({
+                    uploadImage: {
+                        url: '/posts/upload',
+                        accept: 'image',
+                        acceptMime: 'image/*',
+                        exts: 'jpg|png|gif|bmp|jpeg',
+                        size: '10240'
+                    }
+                });
+                var edit = layedit.build('myTxt');
+                // 点击按钮弹出下拉框
+                $('.ui.dropdown').dropdown();
+                // 鼠标悬浮在头像上，弹出气泡提示框
+                $('.post-content .avatar-link').popup({
+                    inline: true,
+                    position: 'bottom right',
+                    lastResort: 'bottom right'
+                });
+            })
+        </script>
+</body>
+
+</html>

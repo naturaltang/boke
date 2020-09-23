@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <base href="/">
+    <link rel="stylesheet" href="./semantic-ui/semantic.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./lib/layui/css/layui.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./semantic-ui/semantic.min.js"></script>
+    <script src="./lib/layui/layui.js"></script>
+
+</head>
+
+<body style="width: 1200px;margin: 0 auto;">
+    <div class="nav">
+        <div class="ui grid">
+            <div class="four wide column"></div>
+            <div class="eight wide column">
+                <a href="/posts">
+                    <h1>标题</h1>
+                </a>
+                <p>副标题</p>
+            </div>
+        </div>
+    </div>
+    <%- include('common/nav') %>
+        <div class="post-content">
+            <% for(var i=0;i<list.length;i++) {%>
+                <div class="ui grid">
+                    <div class="four wide column">
+                        <a class="avatar avatar-link" href="#" data-title="<%=list[i].username%> | <%=list[i].gender%> " data-content="<%=list[i].intro%>">
+                        <img class="avatar" src="<%=list[i].face_url%>">
+                        </a>
+                    </div>
+                    <div class="eight wide column">
+                        <div class="ui segment">
+                            <h3 style="margin-top: -10px;">
+                                <a href="/posts/<%=list[i].id%>">
+                                    <%=list[i].title%>
+                                </a>
+                            </h3>
+                            <pre><%=list[i].content%></pre>
+                            <div style="margin-top: 15px;">
+                                <span class="tag">发布时间为：<%=list[i].createtime%></span>
+                                <span class="tag right">
+                                <span>浏览(<%=list[i].vistor%>)</span>
+                                <span>留言(<%=list[i].comment_count%>)</span>
+                                <% if(user && user.id==list[i].uid){ %>
+                                    <div class="ui inline dropdown">
+                                        <div class="text"></div>
+                                        <i class="dropdown icon"></i>
+                                        <div class="menu">
+                                            <div class="item"><a href="/posts/edit?id=<%=list[i].id%>">编辑</a></div>
+                                            <div class="item"><a href="/posts/remove?id=<%=list[i].id%>">删除</a></div>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                        </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+        <div class="ui two column centered grid">
+            <div class="column" style="display: flex;justify-content: center;">
+                <div class="ui pagination menu">
+                    <a class="icon item" href="/posts?page=1">
+                        <i class="left chevron icon"></i>
+                    </a>
+                    <% pageList.forEach(element => { %>
+                        <a class="item <%=element==page?'active':''%>" href="/posts?page=<%=element%>">
+                            <%=element%>
+                        </a>
+                        <%});%>
+                            <a class="icon item " href="/posts?page=<%=total%>">
+                                <i class="right chevron icon"></i>
+                            </a>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            layui.use(['layedit', 'layer', 'jquery'], function() {
+                var $ = layui.jquery;
+                var layedit = layui.layedit;
+                var layer = layui.layer;
+                //初始化富文本框 
+                // 点击按钮弹出下拉框
+                $('.ui.dropdown').dropdown();
+                // 鼠标悬浮在头像上，弹出气泡提示框
+                $('.post-content .avatar-link').popup({
+                    inline: true,
+                    position: 'bottom right',
+                    lastResort: 'bottom right'
+                });
+            })
+        </script>
+</body>
+
+</html>

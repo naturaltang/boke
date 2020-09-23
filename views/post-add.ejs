@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新增页面</title>
+    <style>
+        .msg {
+            color: skyblue
+        }
+        
+        .err {
+            outline: 1px solid skyblue;
+            font-size: 20px;
+            padding: 5px;
+        }
+        
+        form div {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 style="color: skyblue;">新增页面</h2>
+    <form action="/posts/post-add" method="POST">
+        <div>编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 号：<input type="text" name="id" class="err"></div>
+        <div>文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 章：<input type="text" class="err" name="title"></div>
+        <div>内&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 容：<input type="text" name="content" class="err"></div>
+        <div>用户编号：<input type="text" name="userid" class="err"></div>
+        <div>观看次数：<input type="text" name="vistor" class="err"></div>
+        <div style="margin-left: 90px;"><button style="background-color: skyblue;color: white;border: 1px solid skyblue;padding: 5px 10px;border-radius: 5px;">提交</button></div>
+    </form>
+    <script src="../js/jquery.min.js"></script>
+</body>
+
+</html>

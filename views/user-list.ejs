@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户信息</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script type="text/javascript" src="../js/xadmin.js"></script>
+    <style>
+        .main {
+            width: 80%;
+            margin: 20px auto;
+        }
+        
+        .main table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+        
+        .main th,
+        .main td {
+            text-align: center;
+            border: 1px solid #ccc;
+            color: deeppink;
+        }
+        
+        .main .top input {
+            width: 180px;
+            height: 30px;
+            border: 1px solid #ccc;
+        }
+        
+        .main .top button,
+        .main .top input:last-child {
+            width: 50px;
+            height: 30px;
+            border-radius: 5px;
+            background-color: deeppink;
+            border: 1px solid deeppink;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .main .top a:last-child:hover {
+            text-decoration: none;
+        }
+        
+        td a {
+            color: deeppink;
+        }
+        
+        td a:hover {
+            color: blue;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="top">
+            <form action="/posts/user-list" method="POST">
+                <input type="text" name="username">
+                <button>搜索</button>
+                <!-- <input type="button" name="" id="" value="新增"> -->
+                <input type="button" value="新增" onclick="location.href='/posts/signup'">
+            </form>
+        </div>
+        <table class="table">
+            <tr>
+                <th>编号</th>
+                <th>用户名</th>
+                <th>角色</th>
+                <th>状态</th>
+                <th>性别</th>
+                <th>个人介绍</th>
+                <th>图片地址</th>
+                <th>操作</th>
+            </tr>
+            <!-- ejs中可以运行js代码 -->
+            <% for(var i=0;i<list.length;i++){ %>
+                <tr>
+                    <td>
+                        <%=list[i].id%>
+                    </td>
+                    <td>
+                        <%=list[i].username%>
+                    </td>
+                    <td>
+                        <%=list[i].role%>
+                    </td>
+                    <td>
+                        <%=list[i].status%>
+                    </td>
+                    <td>
+                        <%=list[i].gender%>
+                    </td>
+                    <td>
+                        <%=list[i].intro%>
+                    </td>
+                    <td>
+                        <%=list[i].face_url%>
+                    </td>
+                    <td>
+                        <a href="/posts/user-update?id=<%=list[i].id%>">修改</a>
+                        <a href="/posts/user-del?id=<%=list[i].id%>" onclick="return confirm('确认删除')">删除</a>
+                    </td>
+                </tr>
+                <% }  %>
+        </table>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+body {
+    background-color: #e1ded6;
+}
+
+.main {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.nav {
+    width: 100px;
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.hr {
+    border-bottom: 1px solid #333;
+    margin-top: 20px;
+}
+
+.content {
+    width: 400px;
+    height: 500px;
+    border: 1px solid #333;
+    margin: 20px auto;
+    position: relative;
+}
+
+.one {
+    text-indent: 20px;
+}
+
+.one img {
+    vertical-align: middle;
+}
+
+.one img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 5px 10px 0px 0px;
+}
+
+.one .dian {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+    background-color: rgba(0, 0, 0, .2);
+    border-radius: 50%;
+    /* line-height: 25px; */
+    text-align: center;
+    cursor: pointer;
+    text-indent: 0px;
+    color: white;
+    font-weight: bold;
+    /* font-size: 22px; */
+}
+
+.one p a {
+    color: blue;
+    text-decoration: none;
+}
+
+.one p span {
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: orange;
+    border-radius: 5px;
+    color: white;
+}
+
+.two {
+    text-indent: 20px;
+}
+
+.three {
+    margin-top: 20px;
+    text-indent: 50px;
+}
+
+.hr1 {
+    border-bottom: 1px solid #333;
+    margin-top: 15px;
+}
+
+.three span {
+    padding: 5px 10px;
+    border-radius: 5px;
+    /* background-color: deeppink; */
+    cursor: pointer;
+}
+
+.underline {
+    width: 60px;
+    border-bottom: 3px solid orange;
+    border-radius: 5px;
+    margin-top: 5px;
+    position: absolute;
+    left: 60px;
+    top: 220px;
+}
+
+.last {
+    width: 360px;
+    height: 230px;
+    line-height: 230px;
+    text-align: center;
+    margin: 20px auto;
+    color: #999;
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>myblog</title>
+    <link rel="stylesheet" href="../semantic-ui/semantic.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../semantic-ui/semantic.min.js"></script>
+    <script src="../lib/layui/layui.js"></script>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="ui grid">
+            <div class="four wide column"></div>
+            <div class="eight wide column">
+                <a href="/posts">
+                    <h1>myblog</h1>
+                </a>
+                <p>my first blog</p>
+            </div>
+        </div>
+    </div>
+    <div class="nav-setting">
+        <div class="ui buttons">
+            <div class="ui floating dropdown button">
+                <i class="icon bars"></i>
+                <div class="menu">
+                    <a class="item" href="/signin">登录</a>
+                    <a class="item" href="/signup">注册</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui grid">
+        <div class="four wide column"></div>
+        <div class="eight wide column">
+        </div>
+    </div>
+    <div class="ui grid">
+        <div class="four wide column"></div>
+        <div class="eight wide column">
+            <form class="ui form segment" method="post">
+                <div class="field required">
+                    <label>用户名</label>
+                    <input placeholder="用户名" type="text" name="username">
+                </div>
+                <div class="field required">
+                    <label>密码</label>
+                    <input placeholder="密码" type="password" name="password">
+                </div>
+                <input type="submit" class="ui button fluid" value="登录">
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript">
+        // 动态的弹出框操作
+        layui.use('layer', function() {
+            var layer = layui.layer;
+            var $ = layui.jquery;
+            // layer.msg('提示消息');
+
+            // 点击按钮弹出下拉框
+            $('.ui.dropdown').dropdown();
+            // 鼠标悬浮在头像上，弹出气泡提示框
+            $('.post-content .avatar-link').popup({
+                inline: true,
+                position: 'bottom right',
+                lastResort: 'bottom right'
+            });
+
+            // 实现表单提交的异步请求
+            $("form").submit(function(e) {
+                e.preventDefault();
+                layer.msg('准备提交表单');
+                // $.post（ 请求地址， 数据， 函数）
+                $.post('/posts/login', $(this).serialize(), function(r) {
+                    if (r.status == 'success') {
+                        location.href = '/posts';
+                    } else {
+                        layer.msg(r.msg);
+                    }
+                });
+            })
+        })
+    </script>
+</body>
+
+</html>

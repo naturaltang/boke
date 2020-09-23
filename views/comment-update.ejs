@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改页面</title>
+    <style>
+        input {
+            border: 1px solid #ccc;
+            width: 180px;
+            height: 30px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 style="color:orange;">修改页面</h2>
+    <form action="/posts/comment-update" method="POST">
+        <input type="hidden" name="oldid" value="<%=id%>">
+        <div>内&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 容：<input type="text" name="content" class="err" value="<%= content %>"></div>
+        <div style="margin: 20px 0px 0px 90px;">
+            <button style="background-color: orange;color: white;border: 1px solid orange;padding: 5px 10px;border-radius: 5px;">提交</button>
+        </div>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新增页面</title>
+    <style>
+        .msg {
+            color: orange
+        }
+        
+        .err {
+            outline: 1px solid orange;
+            font-size: 20px;
+            padding: 5px;
+        }
+        
+        form div {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 style="color: orange;">新增页面</h2>
+    <form action="/posts/comment-add" method="POST">
+        <div>编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 号：<input type="text" name="id" class="err"></div>
+        <div>内&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 容：<input type="text" name="content" class="err"></div>
+        <div>博文编号：<input type="text" name="pid" class="err"></div>
+        <div>用户编号：<input type="text" name="userid" class="err"></div>
+        <div style="margin-left: 90px;"><button style="background-color: orange;color: white;border: 1px solid orange;padding: 5px 10px;border-radius: 5px;">提交</button></div>
+    </form>
+    <script src="../js/jquery.min.js"></script>
+</body>
+
+</html>

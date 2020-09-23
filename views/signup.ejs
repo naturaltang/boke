@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>myblog</title>
+    <link rel="stylesheet" href="../semantic-ui/semantic.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../semantic-ui/semantic.min.js"></script>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="ui grid">
+            <div class="four wide column"></div>
+            <div class="eight wide column">
+                <a href="/posts">
+                    <h1>myblog</h1>
+                </a>
+                <p>my first blog</p>
+            </div>
+        </div>
+    </div>
+    <div class="nav-setting">
+        <div class="ui buttons">
+            <div class="ui floating dropdown button">
+                <i class="icon bars"></i>
+                <div class="menu">
+                    <a class="item" href="./posts-login">登录</a>
+                    <a class="item" href="./signup">注册</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui grid">
+        <div class="four wide column"></div>
+        <div class="eight wide column">
+        </div>
+    </div>
+    <div class="ui grid">
+        <div class="four wide column"></div>
+        <div class="eight wide column">
+            <form class="ui form segment" method="post" enctype="multipart/form-data">
+                <div class="field required">
+                    <label>用户名</label>
+                    <input placeholder="用户名" type="text" name="username">
+                </div>
+                <div class="field required">
+                    <label>密码</label>
+                    <input placeholder="密码" type="password" name="password">
+                </div>
+                <div class="field required">
+                    <label>重复密码</label>
+                    <input placeholder="重复密码" type="password">
+                </div>
+                <div class="field required">
+                    <label>性别</label>
+                    <select class="ui compact selection dropdown" name="gender">
+          <option value="男">男</option>
+          <option value="女">女</option>
+          <option value="保密">保密</option>
+        </select>
+                </div>
+                <div class="field required">
+                    <label>头像</label>
+                    <input type="file" name="avatar">
+                    <img src="../img/img1.jpg" alt="" style="width: 100px;height: 100px;border-radius:50%;">
+                </div>
+                <div class="field required">
+                    <label>个人简介</label>
+                    <textarea name="intro" rows="5"></textarea>
+                </div>
+                <input type="submit" class="ui button fluid" value="注册">
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // 点击按钮弹出下拉框
+            $('.ui.dropdown').dropdown();
+            // 鼠标悬浮在头像上，弹出气泡提示框
+            $('.post-content .avatar-link').popup({
+                inline: true,
+                position: 'bottom right',
+                lastResort: 'bottom right'
+            });
+            $("[type=file]").change(function() {
+                var thisFile = this.files[0];
+                var reader = new FileReader();
+                reader.readAsDataURL(thisFile); /*异步解析，不会立马返回结果*/
+                reader.onload = function(e) {
+                    // 把图片的二进制数据转换成base64的字符串
+                    var data = e.target.result;
+                    $("img").show();
+                    $("img").attr("src", data);
+                }
+            });
+            $("img").click(function() {
+                $(this).transition({
+                    debug: true,
+                    animation: 'jiggle',
+                    duration: 500,
+                    interval: 200
+                });
+            })
+        })
+    </script>
+</body>
+
+</html>
